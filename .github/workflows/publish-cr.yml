@@ -1,0 +1,44 @@
+name: 'Publish Image'
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+  workflow_dispatch:   
+
+jobs:
+  publish_container:
+    runs-on: ubuntu-latest
+    env: 
+      CONTAINER_URL: kabeldd.azurecr.io
+      IMAGE_NAME: quironlabeler
+      IMAGE_URL: env.CONTAINER_URL/env.IMAGE_NAME
+      RESOURCE_GROUP: RG_Playground
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: 'Login Azure'
+        uses: azure/login@v1
+        with:
+          creds: ${{ secrets.CREDENTIALS }}
+      - name: 'Login CR'
+        uses: azure/docker-login@v1
+        with:
+          login-server: env.CONTAINER_URL
+          username: ${{ secrets.USERNAME_CR }}
+          password: ${{ secrets.KEY1_CR }}
+      - run: |
+          docker build .t env.IMAGE_URL:${{ github.sha }}
+          docker push IMAGE_URL:${{ github.sha }}
+      - name: Deploy to Azure Container Instances
+        uses: Azure/aci-deploy@v1
+        with:
+          resource-group: env.RESOURCE_GROUP
+          dns-name-label: kabeldd/quironlabeler
+          image: env.IMAGE_URL:${{ github.sha }}
+          registry-username: ${{ secrets.USERNAME_CR }}
+          registry-password: ${{ secrets.KEY1_CR }}
+          name: env.IMAGE_NAME
+          location: 'west europe'        
