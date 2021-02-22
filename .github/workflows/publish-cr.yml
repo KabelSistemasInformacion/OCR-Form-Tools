@@ -29,14 +29,14 @@ jobs:
           username: ${{ secrets.USERNAME_CR }}
           password: ${{ secrets.KEY1_CR }}
       - run: |
-          docker build .t ${{ env.CONTAINER_URL }}://${{ env.IMAGE_NAME }}:${{ github.sha }}
-          docker push ${{ env.CONTAINER_URL }}://${{ env.IMAGE_NAME }}:${{ github.sha }}
+          docker build .t ${{ env.CONTAINER_URL }}:/${{ env.IMAGE_NAME }}:${{ github.sha }}
+          docker push ${{ env.CONTAINER_URL }}:/${{ env.IMAGE_NAME }}:${{ github.sha }}
       - name: Deploy to Azure Container Instances
         uses: Azure/aci-deploy@v1
         with:
           resource-group: env.RESOURCE_GROUP
           dns-name-label: kabeldd/quironlabeler
-          image: ${{ env.CONTAINER_URL }}://${{ env.IMAGE_NAME }}:${{ github.sha }}
+          image: ${{ env.CONTAINER_URL }}:/${{ env.IMAGE_NAME }}:${{ github.sha }}
           registry-username: ${{ secrets.USERNAME_CR }}
           registry-password: ${{ secrets.KEY1_CR }}
           name: env.IMAGE_NAME
