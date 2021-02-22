@@ -45,7 +45,7 @@ jobs:
                 },
                 {
                     "name": "DOCKER_REGISTRY_SERVER_URL",
-                    "value": "https://${{ env.CONTAINER_REGISTRY }}",
+                    "value": "https://${{ env.CONTAINER_URL }}",
                     "slotSetting": false
                 },
                 {
