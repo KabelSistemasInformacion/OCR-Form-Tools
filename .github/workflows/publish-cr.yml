@@ -13,7 +13,7 @@ jobs:
     env: 
       CONTAINER_URL: kabeldd.azurecr.io
       IMAGE_NAME: quironlabeler
-      IMAGE_URL: ${{ env.CONTAINER_URL}}/${{ env.IMAGE_NAME }}
+      IMAGE_URL: $CONTAINER_URL/$IMAGE_NAME
       RESOURCE_GROUP: RG_Playground
 
     steps:
