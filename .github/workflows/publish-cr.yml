@@ -29,7 +29,7 @@ jobs:
           username: ${{ secrets.USERNAME_CR }}
           password: ${{ secrets.KEY1_CR }}
       - run: |
-          docker build .t ${{ env.CONTAINER_URL }}:/${{ env.IMAGE_NAME }}:${{ github.sha }}
+          docker build . -t ${{ env.CONTAINER_URL }}:/${{ env.IMAGE_NAME }}:${{ github.sha }}
           docker push ${{ env.CONTAINER_URL }}:/${{ env.IMAGE_NAME }}:${{ github.sha }}
       - name: Deploy to Azure Container Instances
         uses: Azure/aci-deploy@v1
