@@ -14,6 +14,7 @@ jobs:
       CONTAINER_URL: kabeldd.azurecr.io
       IMAGE_NAME: quironlabeler
       RESOURCE_GROUP: RG_Playground
+      WEBAPP_NAME: quironlabeler
 
     steps:
       - name: Checkout
@@ -31,13 +32,31 @@ jobs:
       - run: |
           docker build . -t ${{ env.CONTAINER_URL }}/${{ env.IMAGE_NAME }}:${{ github.sha }}
           docker push ${{ env.CONTAINER_URL }}/${{ env.IMAGE_NAME }}:${{ github.sha }}
-      - name: Deploy to Azure Container Instances
-        uses: Azure/aci-deploy@v1
+      - name: Set Web App ACR authentication
+        uses: Azure/appservice-settings@v1
         with:
-          resource-group: ${{ env.RESOURCE_GROUP }}
-          dns-name-label: ${{ env.CONTAINER_URL }}/${{ env.IMAGE_NAME }}
-          image: ${{ env.CONTAINER_URL }}/${{ env.IMAGE_NAME }}:${{ github.sha }}
-          registry-username: ${{ secrets.USERNAME_CR }}
-          registry-password: ${{ secrets.KEY1_CR }}
-          name: ${{ env.IMAGE_NAME }}
-          location: 'west europe'        
+          app-name: ${{ env.WEBAPP_NAME }} 
+          app-settings-json: |
+            [
+                {
+                    "name": "DOCKER_REGISTRY_SERVER_PASSWORD",
+                    "value": "${{ secrets.KEY1_CR }}",
+                    "slotSetting": false
+                },
+                {
+                    "name": "DOCKER_REGISTRY_SERVER_URL",
+                    "value": "https://${{ env.CONTAINER_REGISTRY }}",
+                    "slotSetting": false
+                },
+                {
+                    "name": "DOCKER_REGISTRY_SERVER_USERNAME",
+                    "value": "${{ secrets.USERNAME_CR  }}",
+                   "slotSetting": false
+                }
+            ]
+      - name: 'Deploy to Azure Web App for Container'
+        uses: azure/webapps-deploy@v2
+        with: 
+          app-name: ${{ env.WEBAPP_NAME }} 
+          images: ${{ env.CONTAINER_REGISTRY }}/${{ env.IMAGE_NAME }}:${{ github.sha }}
+          startup-command: 'npm start'   
