@@ -13,7 +13,7 @@ jobs:
     env: 
       CONTAINER_URL: kabeldd.azurecr.io
       IMAGE_NAME: quironlabeler
-      IMAGE_URL: env.CONTAINER_URL/env.IMAGE_NAME
+      IMAGE_URL: ${{ env.CONTAINER_URL}}/${{ env.IMAGE_NAME }}
       RESOURCE_GROUP: RG_Playground
 
     steps:
@@ -30,14 +30,14 @@ jobs:
           username: ${{ secrets.USERNAME_CR }}
           password: ${{ secrets.KEY1_CR }}
       - run: |
-          docker build .t env.IMAGE_URL:${{ github.sha }}
-          docker push IMAGE_URL:${{ github.sha }}
+          docker build .t ${{ env.IMAGE_URL }}:${{ github.sha }}
+          docker push ${{ env.IMAGE_URL }}:${{ github.sha }}
       - name: Deploy to Azure Container Instances
         uses: Azure/aci-deploy@v1
         with:
           resource-group: env.RESOURCE_GROUP
           dns-name-label: kabeldd/quironlabeler
-          image: env.IMAGE_URL:${{ github.sha }}
+          image: ${{ env.IMAGE_URL }}:${{ github.sha }}
           registry-username: ${{ secrets.USERNAME_CR }}
           registry-password: ${{ secrets.KEY1_CR }}
           name: env.IMAGE_NAME
