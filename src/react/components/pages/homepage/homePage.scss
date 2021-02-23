@@ -34,8 +34,9 @@ $lighter-8: rgba(255,255,255,0.60);
                 display: flex;
                 flex-direction: column;
                 align-items: stretch;
+                
                 &:hover {
-                    background-color: $lighter-2;
+                    background-color: $darker-5;
                 }
                 &:first-child {
                     margin-left: 2rem;
@@ -51,16 +52,19 @@ $lighter-8: rgba(255,255,255,0.60);
                         padding: 1rem;
                     }
                     .ms-Icon {
-                        color: $lighter-7;
+                        color: $darker-12;
                     }
                     .title {
                         max-width: 12em;
                         margin: auto;
                         font-size: 1.3em;
                         font-weight: bold;
-                        color: $lighter-8;
+                        color: $darker-12;
                         text-align: center;
                         margin-bottom: 1em;
+                    }
+                    .description{
+                        color: $darker-12;
                     }
 
                     &.active,
@@ -74,11 +78,14 @@ $lighter-8: rgba(255,255,255,0.60);
                         .title {
                             color: #fff;
                         }
+                        .description {
+                            color: #fff;
+                        }
                     }
                     &.quickstart {
-                        color: $lighter-7;
+                        color: $darker-12;
                         &:hover {
-                            color: #fff;
+                            color: $darker-12;
                         }
                         .ms-Icon {
                             margin: 5px;

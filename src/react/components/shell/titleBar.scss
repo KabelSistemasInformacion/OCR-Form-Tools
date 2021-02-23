@@ -21,10 +21,14 @@
 }
 
 .title-bar {
-    color: #ccc;
+    color: $lighter-15;
     display: flex;
     flex-direction: row;
     align-items: stretch;
+
+    .title-bar-icon img{
+      width: 25px;
+    }
 
     &-main {
         -webkit-app-region: drag;

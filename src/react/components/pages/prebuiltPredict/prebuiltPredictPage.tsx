@@ -252,7 +252,7 @@ export class PrebuiltPredictPage extends React.Component<IPrebuiltPredictPagePro
                 </div>
                 <div className="predict-sidebar bg-lighter-1">
                     <div className="condensed-list">
-                        <h6 className="condensed-list-header bg-darker-2 p-2 flex-center">
+                        <h6 className="condensed-list-header bg-darker-10 p-2 flex-center">
                             <FontIcon className="mr-1" iconName="ContactCard" />
                             <span>{interpolate(strings.prebuiltPredict.anlayWithPrebuiltModels, this.state.currentPrebuiltType)}</span>
                         </h6>

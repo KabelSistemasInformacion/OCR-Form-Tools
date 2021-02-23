@@ -105,11 +105,10 @@ export class TitleBar extends React.Component<ITitleBarProps, ITitleBarState> {
         };
 
         return (
-            <div className="title-bar bg-lighter-3">
+            <div className="title-bar bg-darker-15">
                 {isNotElectronAndMacOrLinux &&
                     <div className="title-bar-icon">
-                        {typeof (this.props.icon) === "string" && <FontIcon iconName={this.props.icon} />}
-                        {typeof (this.props.icon) !== "string" && this.props.icon}
+                        {typeof (this.props.icon) === "string" && <img alt="logo" src="./icon.png"/>}
                     </div>
                 }
                 {isElectronAndNotMacOrLinux &&
