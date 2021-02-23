@@ -72,9 +72,8 @@ body {
   font-size: 0.9375rem;
   font-weight: 400;
   line-height: 1.5;
-  color: #aaa;
+  color: black;
   text-align: left;
-  background-color: #272B30;
 }
 
 [tabindex="-1"]:focus {
@@ -373,7 +372,7 @@ h1, h2, h3, h4, h5, h6,
 .h1, .h2, .h3, .h4, .h5, .h6 {
   margin-bottom: 0.5rem;
   font-family: inherit;
-  font-weight: 500;
+  font-weight: 350;
   line-height: 1.2;
   color: inherit;
 }
@@ -5813,7 +5812,7 @@ button.close {
   margin-bottom: 0;
   line-height: 1.5;
   font-size: 1.17rem;
-  font-weight: 500;
+  font-weight: 350;
 }
 
 .modal-body {
@@ -9390,7 +9389,7 @@ a.text-light:hover, a.text-light:focus {
 }
 
 .text-dark {
-  color: #272B30 !important;
+  color: rgb(0,178,169) !important;
 }
 
 a.text-dark:hover, a.text-dark:focus {

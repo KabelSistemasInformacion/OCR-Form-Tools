@@ -278,20 +278,20 @@ export default class PredictPage extends React.Component<IPredictPageProps, IPre
                 </div>
                 <div className={"predict-sidebar bg-lighter-1"} style={{ width: sidebarWidth, minWidth: sidebarWidth }}>
                     <div className="condensed-list">
-                        <h6 className="condensed-list-header bg-darker-2 p-2 flex-center">
+                        <h6 className="condensed-list-header bg-darker-10 p-2 flex-center">
                             <FontIcon className="mr-1" iconName="Insights" />
                             <span>{strings.predict.title}</span>
                         </h6>
                         {tagViewMode === AnalyzedTagsMode.default &&
                             <>
                                 {!mostRecentModel ?
-                                    <div className="bg-darker-2 pl-3 pr-3 flex-center ">
+                                    <div className="bg-darker-10 pl-3 pr-3 flex-center ">
                                         <div className="alert alert-warning warning no-models-warning" role="alert">
                                             {strings.predict.noRecentModels}
                                         </div>
                                     </div> :
                                     <>
-                                        <div className="bg-darker-2 pl-3 pr-3 flex-center model-selection-container">
+                                        <div className="bg-darker-10 pl-3 pr-3 flex-center model-selection-container">
                                             <div>
                                                 <h5 className="model-selection-header">
                                                     {strings.predict.selectModelHeader}

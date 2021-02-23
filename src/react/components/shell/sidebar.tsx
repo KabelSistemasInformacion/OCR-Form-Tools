@@ -19,7 +19,7 @@ export function Sidebar({ project }) {
     const projectId = project ? project.id : null;
 
     return (
-        <div className="bg-lighter-2 app-sidebar" id="appSidebar">
+        <div className="bg-darker-15 app-sidebar" id="appSidebar">
             <ul>
                 <li>
                     <NavLink title={"Home"} to={`/`} exact role="button">

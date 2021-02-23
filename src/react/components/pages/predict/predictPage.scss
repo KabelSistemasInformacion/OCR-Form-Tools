@@ -27,6 +27,7 @@
   display: flex;
   width: 400px;
   min-width: 400px;
+  border-left: 2px solid $darker-10;
   .prebuilt-type-dropdown {
     min-width: 130px;
     width: 100%;

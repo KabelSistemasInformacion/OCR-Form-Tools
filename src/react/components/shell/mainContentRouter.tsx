@@ -22,7 +22,7 @@ import {LayoutPredictPage} from "../pages/prebuiltPredict/layoutPredictPage";
 
 export function MainContentRouter() {
     return (
-        <div className="app-content text-light">
+        <div className="app-content text-dark">
             <Switch>
                 <Route path="/" exact component={HomePage} />
                 <Route path="/settings" component={AppSettingsPage} />
