@@ -32,7 +32,7 @@ export class StatusBar extends React.Component<IStatusBarProps, IStatusBarState>
             <div className="status-bar">
                 <div className="status-bar-main">{this.props.children}</div>
                 <div className="status-bar-version">
-                    <ul>
+                    {/* <ul>
                         {this.props.project &&
                             <li>
                             <a href="https://github.com/microsoft/OCR-Form-Tools/blob/master/CHANGELOG.md" target="blank" rel="noopener noreferrer">
@@ -47,7 +47,7 @@ export class StatusBar extends React.Component<IStatusBarProps, IStatusBarState>
                                 <span>{constants.appVersion}-{this.state?.commitHash}</span>
                             </a>
                         </li>
-                    </ul>
+                    </ul> */}
                 </div>
             </div>
         );
