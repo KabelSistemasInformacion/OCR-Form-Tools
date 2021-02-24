@@ -32,22 +32,11 @@ export class StatusBar extends React.Component<IStatusBarProps, IStatusBarState>
             <div className="status-bar">
                 <div className="status-bar-main">{this.props.children}</div>
                 <div className="status-bar-version">
-                    {/* <ul>
-                        {this.props.project &&
-                            <li>
-                            <a href="https://github.com/microsoft/OCR-Form-Tools/blob/master/CHANGELOG.md" target="blank" rel="noopener noreferrer">
-                                    <FontIcon iconName="AzureAPIManagement" />
-                                    <span>{ apiVersion }</span>
-                                </a>
-                            </li>
-                        }
+                    <ul>
                         <li>
-                            <a href="https://github.com/microsoft/OCR-Form-Tools/blob/master/CHANGELOG.md" target="blank" rel="noopener noreferrer">
-                                <FontIcon iconName="BranchMerge" />
-                                <span>{constants.appVersion}-{this.state?.commitHash}</span>
-                            </a>
+                            <a href="https://www.kabel.es" target="blank" rel="noopener noreferrer">Kabel</a>
                         </li>
-                    </ul> */}
+                    </ul>
                 </div>
             </div>
         );
